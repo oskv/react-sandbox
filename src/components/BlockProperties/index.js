@@ -17,7 +17,6 @@ class BlockProperties extends PureComponent {
 
   render() {
     const { block } = this.props;
-    console.log(block);
 
     return (
       <div className='block-properties'>
@@ -33,7 +32,7 @@ class BlockProperties extends PureComponent {
         </Grid>
 
         <CommonProperties block={block}/>
-        { block.type === 'image' && <ImageProperties block={block}/> }
+        { block.type === 'image' && <ImageProperties block={block} /> }
 
       </div>
     )

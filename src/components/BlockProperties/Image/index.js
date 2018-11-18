@@ -11,10 +11,13 @@ class ImageProperties extends PureComponent {
   constructor(props) {
     super(props);
     this.handleChangeImage = this.handleChangeImage.bind(this);
+    this.changeWidth = this.changeWidth.bind(this);
+    this.changeHeight = this.changeHeight.bind(this);
   }
 
   render() {
-    const { block } = this.props.block;
+    const { block } = this.props;
+    const options = block.data.options;
 
     return (
       <div className='image-properties'>
@@ -24,6 +27,32 @@ class ImageProperties extends PureComponent {
             <CloudUploadIcon className='icon' />
             <input type="file" onChange={ this.handleChangeImage } />
           </Button>
+        </div>
+
+        <div className='prop-row'>
+          <Typography variant="body2" className='label'>Image width</Typography>
+          <Slider
+            min={0}
+            max={600}
+            step={1}
+            value={options.width}
+            aria-labelledby="label"
+            className='slider'
+            onChange={this.changeWidth}
+          />
+        </div>
+
+        <div className='prop-row'>
+          <Typography variant="body2" className='label'>Image height</Typography>
+          <Slider
+            min={0}
+            max={600}
+            step={1}
+            value={options.height}
+            aria-labelledby="label"
+            className='slider'
+            onChange={this.changeHeight}
+          />
         </div>
       </div>
     )
@@ -35,9 +64,18 @@ class ImageProperties extends PureComponent {
     reader.onloadend = () => {
       const { block, dispatch} = this.props;
       dispatch(updateBlockOptions(block, { src: reader.result }))
-    }
-
+    };
     reader.readAsDataURL(file);
+  }
+
+  changeWidth(event, value) {
+    const { block, dispatch} = this.props;
+    dispatch(updateBlockOptions(block, { width: value }));
+  }
+
+  changeHeight(event, value){
+    const { block, dispatch} = this.props;
+    dispatch(updateBlockOptions(block, { height: value }));
   }
 }
 
