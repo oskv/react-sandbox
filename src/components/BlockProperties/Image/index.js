@@ -2,11 +2,9 @@ import React, { PureComponent } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/lab/Slider';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { connect } from "react-redux";
-import { updateBlockStyles } from "../../../actions";
-import Input from '@material-ui/core/Input';
+import { updateBlockOptions } from "../../../actions";
 
 class ImageProperties extends PureComponent {
 
@@ -16,48 +14,30 @@ class ImageProperties extends PureComponent {
   }
 
   render() {
-    const { styles } = this.props.block;
+    const { block } = this.props.block;
 
     return (
       <div className='image-properties'>
         <div className='prop-row'>
-
-
-          <Input
-            type='file' label='Upload'
-            inputRef={(ref) => console.log(ref.value)}
-          />
-
-
-          <Button variant="contained" color="default" type='file'>
-            Upload Image
-            <CloudUploadIcon />
+          <Button variant="contained" color="default" type='file' className='select-image' >
+            Select Image
+            <CloudUploadIcon className='icon' />
             <input type="file" onChange={ this.handleChangeImage } />
           </Button>
-        </div>
-
-        <div className='prop-row'>
-          <Typography variant="body2" className='label'>Padding</Typography>
-          <Slider
-            min={0}
-            max={30}
-            step={1}
-            value={styles.padding}
-            aria-labelledby="label"
-            className='slider'
-            onChange={this.changeMargin}
-          />
         </div>
       </div>
     )
   }
 
-  handleChangeImage(event, value) {
-    console.log(value);
-    console.log(this.fileUpload);
-    console.log(event);
-    //const { block, dispatch} = this.props;
-    //dispatch(updateBlockStyles(block, { padding: value }))
+  handleChangeImage(event) {
+    const file = event.target.files[0];
+    let reader = new FileReader();
+    reader.onloadend = () => {
+      const { block, dispatch} = this.props;
+      dispatch(updateBlockOptions(block, { src: reader.result }))
+    }
+
+    reader.readAsDataURL(file);
   }
 }
 

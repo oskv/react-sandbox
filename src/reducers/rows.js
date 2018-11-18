@@ -11,6 +11,8 @@ const rows = (state = [], action) => {
       return addBlock(state, action);
     case 'UPDATE_BLOCK_STYLES':
       return updateStyles(state, action.block, action.properties);
+    case 'UPDATE_BLOCK_OPTIONS':
+      return updateBlockOptions(state, action.block, action.options);
     default:
       return state;
   }
@@ -58,5 +60,14 @@ function updateStyles(rows, block, properties) {
   const activeRow = rowsCopy.find(row => row.id === block.row);
   const activeBlock = activeRow.columns.find(column => column.block && column.block.id === block.id).block;
   activeBlock.styles = Object.assign({}, activeBlock.styles, properties);
+  return rowsCopy;
+}
+
+function updateBlockOptions(rows, block, options) {
+  const rowsCopy = createStateCopy(rows);
+  const activeRow = rowsCopy.find(row => row.id === block.row);
+  const activeBlock = activeRow.columns.find(column => column.block && column.block.id === block.id).block;
+  const newOptions = Object.assign({}, activeBlock.data.options, options);
+  activeBlock.data = Object.assign({}, activeBlock.data, { options: newOptions });
   return rowsCopy;
 }

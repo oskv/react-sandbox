@@ -8,3 +8,21 @@
   padding: 5px;
   width: 95%;
 }
+.block-properties .prop-row {
+  margin: 25px 0;
+}
+.block-properties .select-image{
+  position: relative;
+  width: 100%;
+}
+.block-properties .select-image .icon{
+  margin-left: 20px;
+}
+.block-properties .select-image input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}

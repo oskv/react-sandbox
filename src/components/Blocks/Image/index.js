@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
+import { connect } from "react-redux";
 
-export default class Image extends PureComponent {
+class Image extends PureComponent {
   render() {
     const { block } = this.props;
     const options = block.data.options;
@@ -15,3 +16,9 @@ export default class Image extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  rows: state.rows,
+});
+
+export default connect(mapStateToProps)(Image);

@@ -32,3 +32,9 @@ export const updateBlockStyles = (block, properties) => ({
   block,
   properties,
 });
+
+export const updateBlockOptions = (block, options) => ({
+  type: 'UPDATE_BLOCK_OPTIONS',
+  block,
+  options,
+});
