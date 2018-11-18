@@ -1,0 +1,25 @@
+.row-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 5px;
+  border: 1px dashed white;
+}
+.row-wrapper:hover{
+  border-color: grey;
+}
+.row-content {
+  width: 600px;
+  display: flex;
+}
+.row-wrapper .handler {
+  position: absolute;
+  left: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.row-wrapper:hover .handler{
+  display: block;
+}

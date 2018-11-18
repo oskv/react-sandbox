@@ -1,0 +1,10 @@
+.block-wrapper {
+  padding: 10px;
+  border: 2px solid white;
+  min-height: 38px;
+}
+
+.block-wrapper:hover,
+.block-wrapper.active {
+  border-color: #016e96;
+}

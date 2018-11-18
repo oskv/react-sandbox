@@ -1,0 +1,15 @@
+.column {
+  margin: 1px;
+}
+.column-drop-target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #37a1c8;
+  background-color: #c5e6f4;
+  min-height: 60px;
+  font-size: 14px;
+}
+.column-drop-target.active {
+  background: #38bbf3;
+}

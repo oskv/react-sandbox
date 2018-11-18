@@ -1,0 +1,9 @@
+.rdw-editor-toolbar{
+	position: absolute;
+	top: 100%;
+	display: block;
+	z-index: 999;
+}
+.block-wrapper.active{
+	position: relative;
+}

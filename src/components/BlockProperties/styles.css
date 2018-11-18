@@ -1,0 +1,10 @@
+.block-properties {
+  padding: 10px;
+}
+.block-properties .label {
+  padding: 10px 0;
+}
+.block-properties .slider {
+  padding: 5px;
+  width: 95%;
+}

@@ -1,0 +1,13 @@
+.sidebar-tabs .block-templates-list {
+  width: auto;
+  margin: 0;
+}
+.block-template .content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.block-template .content .material-icons{
+  font-size: 50px;
+}

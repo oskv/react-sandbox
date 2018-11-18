@@ -1,0 +1,11 @@
+.row-drop-target{
+  height: 15px;
+  position: relative;
+}
+.row-drop-target.active {
+  background: #4dabf5;
+}
+
+.row-drop-target.can-drop {
+  background: rgba(77, 171, 245, 0.42);
+}
