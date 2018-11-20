@@ -15,3 +15,28 @@ main {
   margin-right: 5px;
   font-size: 32px;
 }
+
+.main-app-bar-toolbar {
+  position: relative;
+}
+
+.main-app-bar-toolbar .save-buttons-wrapper{
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  display: flex;
+}
+
+.main-app-bar-toolbar .save-buttons-wrapper .button-save{
+  background: #2196f3;
+}
+.main-app-bar-toolbar .save-buttons-wrapper .loader{
+  color: #4caf50;
+  position: absolute;
+  top: -3px;
+  left: -3px;
+}
+
+.main-app-bar-toolbar .saved .button-save{
+  background: #4caf50;
+}
