@@ -49,6 +49,16 @@ export default class HeaderBar extends PureComponent {
 
   handleSaveClick() {
     this.setState({ loading: true, saved: false });
+    console.log('click');
+    //const electron = require('electron');
+    const { ipcRenderer } = window.require('electron');
+    console.log(ipcRenderer);
+    //console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+
+    /*ipcRenderer.on('asynchronous-reply', (event, arg) => {
+      console.log(arg) // prints "pong"
+    })*/
+    ipcRenderer.send('asynchronous-message', 'ping')
 
     setTimeout( () => {
       this.setState({ loading: false, saved: true });

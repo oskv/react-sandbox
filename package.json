@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron-pack": "electron-builder -mwl",
+    "electron-pack": "electron-builder --mac",
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "devDependencies": {
@@ -39,7 +39,7 @@
       "build/**/*",
       "node_modules/**/*"
     ],
-    "directories":{
+    "directories": {
       "buildResources": "assets"
     }
   }
