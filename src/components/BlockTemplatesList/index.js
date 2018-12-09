@@ -9,9 +9,9 @@ export default class RowTemplatesList extends PureComponent {
     this.blocks = [
       { type: 'text', icon: 'text_format', data: { text: 'Input some text here'} },
       { type: 'image', icon: 'image', data: { src: '/images/image-icon-png.png', width: 100, height: 100} },
-      { type: 'button', icon: 'insert_link'},
+      { type: 'button', icon: 'insert_link', data: { title: 'Button', link: '' } },
       { type: 'divider', icon: 'vertical_align_center'},
-      { type: 'video', icon: 'videocam'},
+      //{ type: 'video', icon: 'videocam'},
     ];
   }
 

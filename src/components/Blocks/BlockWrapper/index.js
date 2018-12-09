@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import Text from '../Text';
 import Image from '../Image';
+import Divider from '../Divider';
+import Button from '../Button';
 import './styles.css'
 import { connect } from "react-redux";
 import { setActiveBlock } from "../../../actions";
@@ -19,6 +21,8 @@ class BlockWrapper extends PureComponent {
       <div className={`block-wrapper ${className}`} onClick={this.select} style={block.styles}>
         { block.type === 'text' && <Text block={block} />}
         { block.type === 'image' && <Image block={block} />}
+        { block.type === 'divider' && <Divider block={block} />}
+        { block.type === 'button' && <Button block={block} />}
       </div>
     )
   }
