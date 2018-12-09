@@ -130,6 +130,9 @@ function generateBlock(block) {
     case 'image':
       blockHtml = generateImage(block);
       break;
+    case 'text':
+      blockHtml = block.data.options.text;
+      break;
     default:
       blockHtml = '';
   }

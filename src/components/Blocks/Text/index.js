@@ -4,12 +4,14 @@ import { Editor } from 'react-draft-wysiwyg';
 import { EditorState, convertToRaw, ContentState, convertFromHTML } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
+import { connect } from "react-redux";
+import { updateBlockOptions } from "../../../actions";
 
 const toolbarButtons = {
   options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'colorPicker', 'textAlign', 'link'],
 };
 
-export default class Text extends PureComponent {
+class Text extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -19,7 +21,8 @@ export default class Text extends PureComponent {
           convertFromHTML(`<p>${props.block.data.options.text}</p>`)
         )
       ),
-    }
+    };
+    this.oldText = `<p>${props.block.data.options.text}</p>\n`;
     this.onEditorStateChange = this.onEditorStateChange.bind(this);
   }
 
@@ -41,6 +44,15 @@ export default class Text extends PureComponent {
   }
 
   onEditorStateChange(data) {
-    console.log(draftToHtml(convertToRaw(data.getCurrentContent())));
+    const { block, dispatch} = this.props;
+    const newText = draftToHtml(convertToRaw(data.getCurrentContent()));
+    console.log('this.oldText', this.oldText);
+    if (this.oldText !== newText){
+      dispatch(updateBlockOptions(block, { text: newText }));
+      this.oldText = newText;
+    }
+
   }
 }
+
+export default connect()(Text)
