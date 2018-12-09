@@ -56,7 +56,6 @@ class HeaderBar extends PureComponent {
           </Typography>
           <div className={`save-buttons-wrapper ${buttonClass}`}>
               <Button
-                variant="fab"
                 mini
                 color="primary"
                 className='button-save'

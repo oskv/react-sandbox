@@ -2,7 +2,7 @@
   padding: 10px;
   border: 2px solid white;
   min-height: 38px;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .block-wrapper:hover,
