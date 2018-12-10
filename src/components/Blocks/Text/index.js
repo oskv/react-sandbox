@@ -46,7 +46,6 @@ class Text extends PureComponent {
   onEditorStateChange(data) {
     const { block, dispatch} = this.props;
     const newText = draftToHtml(convertToRaw(data.getCurrentContent()));
-    console.log('this.oldText', this.oldText);
     if (this.oldText !== newText){
       dispatch(updateBlockOptions(block, { text: newText }));
       this.oldText = newText;

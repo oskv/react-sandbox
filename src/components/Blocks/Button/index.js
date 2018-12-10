@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
 import './styles.css'
+import {connect} from "react-redux";
 
-export default class Button extends PureComponent {
+class Button extends PureComponent {
 
   render() {
     const { block } = this.props;
@@ -14,3 +15,9 @@ export default class Button extends PureComponent {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  rows: state.rows,
+});
+
+export default connect(mapStateToProps)(Button);

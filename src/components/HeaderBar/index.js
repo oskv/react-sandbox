@@ -105,7 +105,6 @@ function generateRow(row) {
 }
 
 function generateColumn(column) {
-  console.log(column);
   let styles = { width: column.width };
   const blockHtml = (column.block && generateBlock(column.block)) || '';
   if (column.block) {
@@ -115,7 +114,6 @@ function generateColumn(column) {
 }
 
 function generateColumnStyles(styles) {
-  console.log(styles);
   let stylesStr = `width: ${styles.width}%;`;
   if (styles.padding) {
     stylesStr += ` padding: ${styles.padding}px;`;
@@ -133,6 +131,12 @@ function generateBlock(block) {
     case 'text':
       blockHtml = block.data.options.text;
       break;
+    case 'divider':
+      blockHtml = generateDivider(block);
+      break;
+    case 'button':
+      blockHtml = generateButton(block);
+      break;
     default:
       blockHtml = '';
   }
@@ -143,4 +147,14 @@ function generateImage(block) {
   const options = block.data.options;
   const imageHtml = `\n\t\t\t<img src="${options.src}" width="${options.width}px" height="${options.height}px" />`;
   return imageHtml;
+}
+
+function generateDivider() {
+  return "<p style='width: 100%; height: 1px; background: black;'></p>";
+}
+
+function generateButton(block) {
+  const options = block.data.options;
+  const styles = 'padding: 5px 10px; border: 1px solid black; border-radius: 5px; display: inline-block';
+  return `<a href='${options.link}' style='${styles}'>${options.title}</a>`;
 }

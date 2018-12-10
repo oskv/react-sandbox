@@ -5,6 +5,7 @@ import Icon from '@material-ui/core/Icon';
 import Grid from '@material-ui/core/Grid';
 import CommonProperties from './Common';
 import ImageProperties from './Image';
+import ButtonProperties from './Button';
 import './styles.css'
 import { disactivateBlock } from "../../actions";
 import {connect} from "react-redux";
@@ -33,6 +34,7 @@ class BlockProperties extends PureComponent {
 
         <CommonProperties block={block}/>
         { block.type === 'image' && <ImageProperties block={block} /> }
+        { block.type === 'button' && <ButtonProperties block={block} /> }
 
       </div>
     )
